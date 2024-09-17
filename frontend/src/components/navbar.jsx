@@ -1,7 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({ color }) => {
+  const textcolor = (color === "white") ? "text-white" : "text-black";
+
   return (
     <div>
       <nav className="absolute top-0 left-0 w-full p-4 mt-[-20px] flex justify-between items-center bg-transparent">
@@ -9,21 +11,29 @@ const Navbar = () => {
           <img
             src="/data/logo.png"
             alt="Hotel Logo"
-            className='w-24 h-24'
+            className="w-24 h-24"
           />
-          <span className="text-black font-bold text-lg">URBAN OASIS</span>
+          <span className={`font-bold text-lg ${textcolor}`}>URBAN OASIS</span>
         </div>
-        <div className='mr-10'>
-          <ul className="flex space-x-7 text-black">
-            <li><Link to="/HomePage" className="hover:underline">Home</Link></li>
-            <li><Link to="/AboutUs" className="hover:underline">About</Link></li>
-            <li><Link to="/Facilities" className="hover:underline">Facilities</Link></li>
-            <li><Link to="/Contact" className="hover:underline">Contact</Link></li>
+        <div className="mr-10">
+          <ul className={`flex space-x-7 text-black font-bold ${textcolor}`}>
+            <li>
+              <NavLink to="/" className="hover:underline">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/Facilities" className="hover:underline">Facilities</NavLink>
+            </li>
+            <li>
+              <NavLink to="/RoomsPage" className="hover:underline">Rooms</NavLink>
+            </li>
+            <li>
+              <NavLink to="/AboutUs" className="hover:underline">About Us</NavLink>
+            </li>
           </ul>
         </div>
       </nav>
     </div>
   );
-}
+};
 
 export default Navbar;
